@@ -1,77 +1,71 @@
 # 微光
 
-> 暖光里的一片光，接住那些亮了一下的瞬间。
+> 那些亮了一下的瞬间，都收在这里。
+>
+> *A quiet place for the moments that lit up, just for a second.*
 
-一个不用解释的快乐记录仪。不评分、不分类、不打卡。所有记录只留在这台设备上。
+一个人也能用的快乐记录仪。不评分，不分类，不打卡——只是把「刚才有点开心」这件事，轻轻放进去。
+
+*A small, unjudging journal for happy moments. No scores, no categories, no streaks. You just place "that felt good, just now" into it, gently.*
 
 ---
 
-## 怎么用
+## 怎么开始 · How to begin
 
-| 手势 | 得到什么 |
+打开这个页面就可以用，手机和电脑都行：
+
+**https://fluffytighnari.github.io/SlightLight_HappyMomentRecoder/**
+
+*Open the link above on your phone or on a computer, and you are already inside.*
+
+- 手机上想更顺手：iOS 用「分享 → 添加到主屏幕」，Android 用菜单里的「安装应用」。之后它就像一个很小的小应用，点开就是那间房间。
+  *On a phone, add it to your home screen — Share → Add to Home Screen on iOS, or Install app from the menu on Android. It then opens like a tiny app, straight into the room.*
+- 不用注册，不用登录。打开就有光。
+  *No account, no sign-in. The light is already there.*
+
+---
+
+## 三种手势 · Three gestures
+
+| 手势 · Gesture | 你会得到 · What you get |
 |---|---|
-| 轻点「此刻」 | 一个时间戳 + 当时的光色（晨光 / 昼白 / 暮色 / 夜灯 / 深宵） |
-| 按住「声」 | 一段现场声音，松手即存，最长 30 秒，边说边能看到声音的高低 |
-| 轻点「影」→ 轻点快门 | 一张照片 |
-| 按住快门 | 一段 5 秒短片 |
+| 轻点「此刻」<br>*Tap「此刻」· This moment* | 一个时间戳，和当时的光色：晨光、昼白、暮色、夜灯、深宵。<br>*A timestamp, and the colour of the light right then — morning, daylight, dusk, lamplight, late night.* |
+| 按住「声」<br>*Hold「声」· Sound* | 一段现场的声音，松手即存，最长三十秒；按住的时候，能看见声音的高低起伏。<br>*The sound of where you are, kept the moment you let go, up to thirty seconds. While you hold it, you can watch the sound rise and fall.* |
+| 轻点「影」，再轻点快门<br>*Tap「影」· Image, then the shutter* | 一张照片；按住快门，是一段五秒的短片。<br>*A photograph. Hold the shutter a little longer and it becomes a five-second film.* |
 
-- 房间里的每一粒光，都对应一条记录。点它，就是回到那一刻。
-- 房间只留最近 30 粒。更早的光会沉进右下角的「光瓶」，点开可以翻（双指放大、拖动、点一粒回到那一刻）。
-- 瓶子里还有「按时间翻看」：点开是一支更深的玻璃管，光粒沿管壁往下沉，日期是玻璃上的刻度，每一粒光都由一根细线引出它的时间和描述；可以从「全部」切到「瓶底」，也可以直接搜一句话、一个日期或星期。
-- 一条光里可以叠最多四层：先记下这一刻，再点「+ 再加一点」，补一句话、一段声或一张影。
-- 叠了多层的时刻，在房间里会多一圈很淡的环。
+---
+
+## 房间里的光 · The lights in the room
+
+每记下一次，房间就多一粒光。房间里每一粒光，都对应一条记录——点它，就是回到那一刻。
+
+*Every time you keep something, another small light appears in the room. Each light is one memory; touch it, and you are back inside that moment.*
+
+- 房间只留最近三十粒。更早的光会慢慢沉进右下角的「光瓶」。
+  *The room keeps the last thirty. Older ones drift down into the jar in the bottom right corner.*
+- 瓶子里可以按时间翻看：光粒沿着玻璃管往下沉，日期是刻在玻璃上的刻度，每一粒都由一根细线引出它的时间和描述。可以从「全部」切到「瓶底」，也可以直接搜一句话、一个日期，或一个礼拜。
+  *Inside the jar you can go back through time: the lights sink along a deep glass tube, dates are the marks on the glass, and a thin thread draws each light's time and its words out beside it. You can move from "all" down to "the bottom of the jar", or simply search a sentence, a date, a week.*
+- 一条光里最多可以叠四层：先记下这一刻，再点「+ 再加一点」，补一句话、一段声，或一张影。叠了多层的时刻，在房间里会多出一圈很淡的环。
+  *One light can hold up to four layers: keep the moment first, then「+ 再加一点」· "one more thing" to add a sentence, a sound, or an image. Moments with layers carry a very faint ring around them in the room.*
 - 记录之后可以补一句话，也可以永远不补。
+  *You can add words afterwards, or never.*
 - 不做编辑，只做删除。
-- 轻点「此刻」会荡开一圈光；新的光在房间里慢慢亮起。按住「声」时，能看到声音的高低。
-- 显影、设置和翻看都是从暗处浮出来的；照片会先留好位置，再慢慢亮起。
+  *Nothing is edited. Only letting go.*
 - 每次打开，会有一粒旧光自己亮起来。
-- 设置里有「放映这段日子的光」：把最近 12 粒光按时间顺序慢慢放一遍，轻点跳过。
+  *Each time you open it, one older light comes up on its own.*
+- 设置里有「放映这段日子的光」：把最近十二粒光按时间慢慢放一遍，轻点即可跳过。
+  *In settings there is「放映这段日子的光」· "play the light of these days": the last twelve lights, in order, slowly. Tap to skip.*
 
-## 本地运行
+---
 
-浏览器只在 **HTTPS 或 localhost** 下允许录音 / 录像。直接双击 `index.html` 可以看房间、记「此刻」，但「声」「影」会被浏览器拦掉。
+## 只属于你 · Yours alone
 
-```bash
-python -m http.server 8765 --bind 127.0.0.1
-# 打开 http://localhost:8765
-```
+所有记录只留在这台设备上，不会上传到任何地方。也可以把备份带走，在另一台设备上继续；重复的光会自己跳过，不会叠两次。
 
-> 端口 8000 / 8080 可能被 Docker Desktop 或 WSL 占用，启动时会报
-> `PermissionError: [WinError 10013]`。换一个空闲端口即可，或者继续用 8000
-> 但只绑定本机：`python -m http.server 8000 --bind 127.0.0.1`。
+*Everything stays on this device and is never uploaded anywhere. You can also carry a backup to another device and keep going there; lights you already have are recognised and quietly skipped.*
+
+---
+
+> 光不需要被整理，它只需要被留下。
 >
-> 绑定 `127.0.0.1` 时手机访问不到；手机测试请用 https 部署（见下一节）。
-
-## 放到手机上
-
-1. 把整个文件夹部署到任意静态托管（GitHub Pages、Vercel、Netlify 都行），拿到一个 https 地址。
-2. 手机浏览器打开该地址。
-3. iOS：分享 → 添加到主屏幕；Android：菜单 → 安装应用。
-
-装到主屏后是全屏、离线可用的。
-
-## 快捷记录
-
-访问 `.../index.html?quick=1` 会在打开时直接记下一次「此刻」，不需要任何点击。可以配合 iOS 快捷指令 / Android 桌面快捷方式使用。
-
-## 文件
-
-| 文件 | 作用 |
-|---|---|
-| `index.html` | 全部界面与逻辑 |
-| `manifest.webmanifest` | 应用名称、图标、全屏设置 |
-| `sw.js` | 离线缓存 |
-| `icon.svg` / `icon-512.png` | 图标 |
-
-## 数据
-
-- 文字记录：`localStorage`（键名 `weiguang.records.v1`）
-- 照片 / 声音 / 视频：`IndexedDB`（库名 `weiguang`）
-- 设置 → 「导出备份」可以导出 JSON（媒体以 base64 内嵌，超过 48MB 的会被跳过）
-- 设置 → 「导入备份」可以把 JSON 收回另一台设备，重复的记录会自动跳过
-
-## 设计上刻意不做的事
-
-连续打卡天数、快乐指数、周报年报、目标、提醒推送、必填标签、按情绪或标签分类、排行榜、任何可以「失败」的东西。
-
-因为快乐一旦变成考核，就会重新变成压力。
+> *Light doesn't need to be sorted. It only needs somewhere to stay.*
