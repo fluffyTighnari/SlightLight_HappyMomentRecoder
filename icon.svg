@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="room" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#151319"/>
+      <stop offset="100%" stop-color="#08080B"/>
+    </radialGradient>
+    <radialGradient id="dust" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF7EA" stop-opacity="1"/>
+      <stop offset="25%" stop-color="#FFD9A0" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#FFB86B" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#FFB86B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFD9A0" stop-opacity="0"/>
+      <stop offset="35%" stop-color="#FFD9A0" stop-opacity="0.18"/>
+      <stop offset="70%" stop-color="#FFC98F" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#FFC98F" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#room)"/>
+  <g transform="rotate(-32 256 256)">
+    <rect x="-100" y="196" width="712" height="120" fill="url(#beam)"/>
+  </g>
+  <circle cx="256" cy="246" r="120" fill="url(#dust)"/>
+  <circle cx="256" cy="246" r="9" fill="#FFF3DE"/>
+  <circle cx="178" cy="316" r="22" fill="url(#dust)" opacity="0.55"/>
+  <circle cx="330" cy="190" r="16" fill="url(#dust)" opacity="0.45"/>
+</svg>
