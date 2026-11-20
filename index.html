@@ -361,6 +361,7 @@
   .jar-vessel{
     position:relative;
     width:min(64vw,280px);
+    height:min(56vh,440px);
     height:min(56dvh,440px);
     border-radius:16px 16px 46px 46px;
     border:1px solid rgba(255,238,214,.15);
@@ -915,12 +916,12 @@
     align-items:center;
     gap:14px;
   }
-  .v-body.multi img,.v-body.multi video{max-height:40dvh;}
+  .v-body.multi img,.v-body.multi video{max-height:40vh;max-height:40dvh;}
   .v-body.multi .v-band{width:min(100%,360px);}
   .v-body img,.v-body video{
     display:block;
     max-width:100%;
-    max-height:60dvh;
+    max-height:60vh;max-height:60dvh;
     margin:0 auto;
     border-radius:2px;
     box-shadow:0 24px 70px rgba(0,0,0,.7),0 0 0 1px rgba(255,235,205,.06);
@@ -1269,7 +1270,7 @@
   .s-media img,.s-media video{
     display:block;
     max-width:100%;
-    max-height:52dvh;
+    max-height:52vh;max-height:52dvh;
     margin:0 auto;
     border-radius:2px;
     box-shadow:0 24px 70px rgba(0,0,0,.7),0 0 0 1px rgba(255,235,205,.06);
@@ -1455,6 +1456,95 @@
     cursor:pointer;
   }
 
+  /* ---------- 一粒一粒翻看 ---------- */
+  .replay{
+    position:fixed;inset:0;z-index:44;
+    display:flex;flex-direction:column;
+    background:
+      radial-gradient(ellipse at 50% 28%,rgba(46,29,21,.94),rgba(11,8,6,.995) 68%),
+      linear-gradient(180deg,#1a120e,#0b0806);
+    opacity:0;visibility:hidden;
+    transition:opacity .42s ease,visibility .42s;
+  }
+  .replay.open{opacity:1;visibility:visible;}
+  .replay-top{
+    position:fixed;top:0;left:0;right:0;z-index:3;
+    display:flex;align-items:center;gap:14px;
+    padding:calc(12px + env(safe-area-inset-top)) 18px 12px;
+    background:linear-gradient(180deg,rgba(11,8,6,.88),rgba(11,8,6,0));
+    pointer-events:none;
+  }
+  .replay-head{flex:1;min-width:0;}
+  .replay-title{font-family:var(--serif);font-size:15px;letter-spacing:.24em;color:rgba(241,234,223,.62);}
+  .replay-sub{margin-top:3px;font-size:10.5px;letter-spacing:.16em;color:rgba(241,234,223,.24);}
+  .replay-pos{font-family:var(--serif);font-size:11px;letter-spacing:.14em;color:rgba(241,234,223,.34);font-variant-numeric:tabular-nums;flex:none;}
+  .replay-pos i{font-style:normal;opacity:.4;margin:0 3px;}
+  .replay-close{
+    pointer-events:auto;flex:none;
+    width:38px;height:38px;border-radius:50%;
+    border:1px solid var(--line-soft);background:rgba(20,16,13,.55);
+    color:var(--ink-dim);font-size:18px;line-height:1;display:grid;place-items:center;cursor:pointer;
+  }
+  .replay-close:active{transform:scale(.92);}
+  .replay-track{
+    flex:1;min-height:0;overflow-y:auto;
+    scroll-snap-type:y mandatory;
+    overscroll-behavior:contain;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+    touch-action:pan-y;
+  }
+  .replay-track::-webkit-scrollbar{display:none;}
+  .replay-page{
+    position:relative;
+    height:100%;
+    scroll-snap-align:start;scroll-snap-stop:always;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:calc(74px + env(safe-area-inset-top)) 26px calc(58px + env(safe-area-inset-bottom));
+    opacity:.28;
+    transition:opacity .55s ease;
+  }
+  .replay-page.near{opacity:1;}
+  .rp-meta{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:var(--serif);font-size:11.5px;letter-spacing:.15em;
+    color:rgba(233,227,214,.42);margin-bottom:22px;
+  }
+  .rp-meta i{width:5px;height:5px;border-radius:50%;display:inline-block;box-shadow:0 0 10px 2px currentColor;}
+  .rp-body{display:flex;flex-direction:column;align-items:center;gap:13px;width:100%;}
+  .rp-band{max-width:420px;}
+  .rp-photo{
+    display:block;max-width:100%;max-height:min(40vh,360px);
+    border-radius:16px;object-fit:contain;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+    opacity:0;transition:opacity .8s ease;
+  }
+  .rp-photo.ready{opacity:1;}
+  .rp-video{width:100%;display:flex;justify-content:center;}
+  .rp-video video{
+    width:100%;max-height:min(40vh,360px);
+    border-radius:16px;background:#000;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+  }
+  .rp-text{
+    margin-top:22px;
+    font-family:var(--serif);font-size:19px;line-height:1.95;letter-spacing:.06em;
+    color:rgba(246,239,228,.9);text-align:left;white-space:pre-wrap;
+    max-height:26vh;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;
+  }
+  .rp-text::-webkit-scrollbar{display:none;}
+  .rp-quiet{color:rgba(233,227,214,.4);}
+  .rp-foot{margin-top:26px;font-size:10px;letter-spacing:.18em;color:rgba(241,234,223,.2);}
+  .replay-hint{
+    position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));
+    transform:translateX(-50%);
+    font-family:var(--serif);font-size:11px;letter-spacing:.2em;
+    color:rgba(241,234,223,.26);pointer-events:none;
+    transition:opacity .4s ease;
+  }
+  .replay-hint.gone{opacity:0;}
+  .jar-replay{color:rgba(255,232,205,.62);}
+
   /* ---------- misc ---------- */
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
   .v-close:active,.s-close:active,.cam-close:active,
@@ -1462,6 +1552,16 @@
   .btn:active{transform:scale(.985);}
   .attach-btn:active{transform:scale(.985);}
   .jar-scope:active{opacity:.72;}
+
+  /* ---------- 小屏：轻一点 ---------- */
+  @media (max-width:620px){
+    canvas#room{animation-duration:1.4s;}
+    .dock{animation-duration:.9s;}
+    .hint,.toast{backdrop-filter:none;-webkit-backdrop-filter:none;}
+    .hint{background:rgba(24,19,16,.74);}
+    .toast{background:rgba(19,17,19,.88);}
+  }
+
   @media (prefers-reduced-motion:reduce){
     *{
       animation-duration:.01ms !important;
@@ -1554,6 +1654,7 @@
     <div class="jar-meta">
       <div><span id="jarTotal">0</span> 粒沉在瓶底</div>
       <div class="jar-hint">双指放大 · 拖动看看</div>
+      <button class="jar-browse jar-replay" id="jarReplay">一粒一粒看</button>
       <button class="jar-browse" id="jarBrowse">按时间翻看</button>
       <button class="jar-reset" id="jarReset">还原</button>
     </div>
@@ -1588,6 +1689,20 @@
   </section>
 </div>
 
+<!-- 一粒一粒翻看 -->
+<div class="replay" id="replay" aria-hidden="true">
+  <header class="replay-top">
+    <div class="replay-head">
+      <div class="replay-title">翻看</div>
+      <div class="replay-sub" id="replaySub">共 0 粒</div>
+    </div>
+    <div class="replay-pos"><span id="replayIndex">1</span><i>/</i><span id="replayTotal">0</span></div>
+    <button class="replay-close" id="replayClose" aria-label="关闭">×</button>
+  </header>
+  <div class="replay-track" id="replayTrack"></div>
+  <div class="replay-hint" id="replayHint">上滑，看下一粒</div>
+</div>
+
 <!-- 设置 -->
 <div class="veil" id="settings">
   <button class="v-close" id="settingsClose" aria-label="关闭">×</button>
@@ -1597,6 +1712,7 @@
     <div class="prow"><span>记录</span><b id="statCount">0 粒</b></div>
     <div class="prow"><span>已用空间</span><b id="statSize">—</b></div>
     <div class="acts">
+      <button class="btn" id="replayBtn">一粒一粒翻看</button>
       <button class="btn" id="screenBtn">放映这段日子的光</button>
       <button class="btn" id="exportBtn">导出备份</button>
       <button class="btn" id="importBtn">导入备份</button>
@@ -1844,6 +1960,13 @@ async function mediaDel(id){
 const ctx = canvas.getContext('2d', { alpha: false });
 let W = 0, H = 0, DPR = 1;
 let sprites = {};
+let frameGap = 0;          // 小屏上每两帧画一次
+let lastRoomFrame = 0;
+let roomGrads = null;      // 静态渐变缓存，避免每帧重建
+
+function isSmallScene(){
+  return Math.min(window.innerWidth, window.innerHeight) < 620;
+}
 
 function spriteFor(id){
   if (sprites[id]) return sprites[id];
@@ -1963,10 +2086,13 @@ function buildScene(){
   syncThemeColor();
   buildBokeh();
   buildDust();
+  roomGrads = null;
 }
 
 function resize(){
-  DPR = Math.min(window.devicePixelRatio || 1, 2);
+  const small = isSmallScene();
+  DPR = Math.min(window.devicePixelRatio || 1, small ? 1.5 : 2);
+  frameGap = small ? 30 : 0;
   W = window.innerWidth;
   H = window.innerHeight;
   canvas.width = Math.floor(W * DPR);
@@ -1976,6 +2102,8 @@ function resize(){
   ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
   buildScene();
   grainPattern = null;
+  roomGrads = null;
+  lastRoomFrame = 0;
   rebuildMotes(true);
 }
 
@@ -2073,60 +2201,53 @@ let lastGrainShift = 0;
 function frame(now){
   rafId = requestAnimationFrame(frame);
 
+  // 录音的电平要一直更新，哪怕房间被面板盖住
   if (recordingMode === 'voice') readLevel();
+
+  // 小屏上每两帧画一次；被面板盖住或切到后台时不再空转
+  if (frameGap && now - lastRoomFrame < frameGap - 2) return;
+  lastRoomFrame = now;
+  if (roomPaused()) return;
 
   const hour = new Date().getHours();
   if (hour !== paletteHour){
     paletteHour = hour;
     palette = paletteForHour(hour);
     syncThemeColor();
+    roomGrads = null;
   }
 
   ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
 
+  if (!roomGrads) buildRoomGrads();
+  const G = roomGrads;
+
   // 房间的底色
-  const bg = ctx.createLinearGradient(0, 0, 0, H);
-  bg.addColorStop(0, palette.top);
-  bg.addColorStop(1, palette.bot);
-  ctx.fillStyle = bg;
+  ctx.fillStyle = G.bg;
   ctx.fillRect(0, 0, W, H);
 
   const c = bloomCenter();
-  const R = bloomRadius();
   const breath = 0.86 + 0.14 * Math.sin(now * 0.00034);
 
   // 从窗边漫进来的光
   ctx.save();
   ctx.globalCompositeOperation = 'lighter';
-  const win = ctx.createRadialGradient(W * 0.06, H * 0.02, 0, W * 0.06, H * 0.02, Math.max(W, H) * 0.85);
-  win.addColorStop(0.00, rgba(palette.rose, 0.10 * breath));
-  win.addColorStop(0.42, rgba(palette.rose, 0.035 * breath));
-  win.addColorStop(1.00, rgba(palette.rose, 0));
-  ctx.fillStyle = win;
+  ctx.globalAlpha = breath;
+  ctx.fillStyle = G.win;
   ctx.fillRect(0, 0, W, H);
 
   // 窗外那片落在墙上的暖光，缓慢地移
   const wx = W * 0.74 + Math.sin(now * 0.000060) * W * 0.045;
   const wy = H * 0.14 + Math.cos(now * 0.000050) * H * 0.035;
-  const pool = ctx.createRadialGradient(wx, wy, 0, wx, wy, Math.max(W, H) * 0.58);
-  pool.addColorStop(0.00, rgba(palette.warm, 0.15 * breath));
-  pool.addColorStop(0.35, rgba(palette.warm, 0.055 * breath));
-  pool.addColorStop(1.00, rgba(palette.warm, 0));
-  ctx.fillStyle = pool;
+  ctx.fillStyle = poolGradient(wx, wy);
   ctx.fillRect(0, 0, W, H);
+  ctx.globalAlpha = 1;
 
   // 地面的一点反光
-  const shade = ctx.createLinearGradient(0, H * 0.52, 0, H);
-  shade.addColorStop(0, 'rgba(8,5,4,0)');
-  shade.addColorStop(0.55, 'rgba(8,5,4,0.22)');
-  shade.addColorStop(1, 'rgba(8,5,4,0.42)');
-  ctx.fillStyle = shade;
+  ctx.fillStyle = G.shade;
   ctx.fillRect(0, H * 0.52, W, H * 0.48);
 
-  const floor = ctx.createLinearGradient(0, H * 0.7, 0, H);
-  floor.addColorStop(0, rgba(palette.warm, 0));
-  floor.addColorStop(1, rgba(palette.warm, 0.075));
-  ctx.fillStyle = floor;
+  ctx.fillStyle = G.floor;
   ctx.fillRect(0, H * 0.7, W, H * 0.3);
   ctx.restore();
 
@@ -2162,20 +2283,13 @@ function frame(now){
   // 中心那一片光
   ctx.save();
   ctx.globalCompositeOperation = 'lighter';
-  const glow = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, R * 1.6);
-  glow.addColorStop(0.00, rgba(palette.glow, 0.22 * breath));
-  glow.addColorStop(0.28, rgba(palette.glow, 0.10 * breath));
-  glow.addColorStop(0.62, rgba(palette.glow, 0.034 * breath));
-  glow.addColorStop(1.00, rgba(palette.glow, 0));
-  ctx.fillStyle = glow;
+  ctx.globalAlpha = breath;
+  ctx.fillStyle = G.glow;
   ctx.fillRect(0, 0, W, H);
+  ctx.globalAlpha = 1;
 
   // 底部灯的温度
-  const lamp = ctx.createRadialGradient(W * 0.5, H * 1.02, 0, W * 0.5, H * 1.02, Math.max(W, H) * 0.6);
-  lamp.addColorStop(0.00, rgba(palette.warm, 0.13));
-  lamp.addColorStop(0.45, rgba(palette.warm, 0.04));
-  lamp.addColorStop(1.00, rgba(palette.warm, 0));
-  ctx.fillStyle = lamp;
+  ctx.fillStyle = G.lamp;
   ctx.fillRect(0, 0, W, H);
   ctx.restore();
 
@@ -2333,11 +2447,7 @@ function frame(now){
   }
 
   // 一点的暗角，让中间更暖
-  const vig = ctx.createRadialGradient(c.x, c.y, Math.min(W, H) * 0.24, c.x, c.y, Math.max(W, H) * 0.86);
-  vig.addColorStop(0, 'rgba(0,0,0,0)');
-  vig.addColorStop(0.68, 'rgba(10,7,5,0.22)');
-  vig.addColorStop(1, 'rgba(10,7,5,0.62)');
-  ctx.fillStyle = vig;
+  ctx.fillStyle = G.vig;
   ctx.fillRect(0, 0, W, H);
 
   // 颗粒
@@ -2355,6 +2465,65 @@ function frame(now){
     ctx.fillRect(0, 0, W, H);
     ctx.restore();
   }
+}
+
+/* 静态渐变只做一次；呼吸和移动留到每帧 */
+function buildRoomGrads(){
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  const c = bloomCenter();
+  const R = bloomRadius();
+  const g = {};
+
+  g.bg = ctx.createLinearGradient(0, 0, 0, H);
+  g.bg.addColorStop(0, palette.top);
+  g.bg.addColorStop(1, palette.bot);
+
+  g.win = ctx.createRadialGradient(W * 0.06, H * 0.02, 0, W * 0.06, H * 0.02, Math.max(W, H) * 0.85);
+  g.win.addColorStop(0.00, rgba(palette.rose, 0.10));
+  g.win.addColorStop(0.42, rgba(palette.rose, 0.035));
+  g.win.addColorStop(1.00, rgba(palette.rose, 0));
+
+  g.shade = ctx.createLinearGradient(0, H * 0.52, 0, H);
+  g.shade.addColorStop(0, 'rgba(8,5,4,0)');
+  g.shade.addColorStop(0.55, 'rgba(8,5,4,0.22)');
+  g.shade.addColorStop(1, 'rgba(8,5,4,0.42)');
+
+  g.floor = ctx.createLinearGradient(0, H * 0.7, 0, H);
+  g.floor.addColorStop(0, rgba(palette.warm, 0));
+  g.floor.addColorStop(1, rgba(palette.warm, 0.075));
+
+  g.glow = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, R * 1.6);
+  g.glow.addColorStop(0.00, rgba(palette.glow, 0.22));
+  g.glow.addColorStop(0.28, rgba(palette.glow, 0.10));
+  g.glow.addColorStop(0.62, rgba(palette.glow, 0.034));
+  g.glow.addColorStop(1.00, rgba(palette.glow, 0));
+
+  g.lamp = ctx.createRadialGradient(W * 0.5, H * 1.02, 0, W * 0.5, H * 1.02, Math.max(W, H) * 0.6);
+  g.lamp.addColorStop(0.00, rgba(palette.warm, 0.13));
+  g.lamp.addColorStop(0.45, rgba(palette.warm, 0.04));
+  g.lamp.addColorStop(1.00, rgba(palette.warm, 0));
+
+  g.vig = ctx.createRadialGradient(c.x, c.y, Math.min(W, H) * 0.24, c.x, c.y, Math.max(W, H) * 0.86);
+  g.vig.addColorStop(0, 'rgba(0,0,0,0)');
+  g.vig.addColorStop(0.68, 'rgba(10,7,5,0.22)');
+  g.vig.addColorStop(1, 'rgba(10,7,5,0.62)');
+
+  roomGrads = g;
+}
+
+/* 这块暖光会慢慢移动，仍然每帧重建一次 */
+function poolGradient(wx, wy){
+  const p = ctx.createRadialGradient(wx, wy, 0, wx, wy, Math.max(W, H) * 0.58);
+  p.addColorStop(0.00, rgba(palette.warm, 0.15));
+  p.addColorStop(0.35, rgba(palette.warm, 0.055));
+  p.addColorStop(1.00, rgba(palette.warm, 0));
+  return p;
+}
+
+/* 被任何一层遮住时，房间不再重复绘制 */
+function roomPaused(){
+  if (document.hidden) return true;
+  return !!document.querySelector('.veil.open, .sheet.open, .camera.open, .screening.open, .replay.open');
 }
 
 /* =========================================================
@@ -2773,6 +2942,9 @@ async function openCamera(attachTo){
   camHint.textContent = window.MediaRecorder ? '轻点拍照 · 按住录像' : '轻点拍照';
 }
 
+const lensKey = $('#lensKey');
+lensKey.addEventListener('click', () => openCamera(null));
+
 function closeCamera(){
   clearTimeout(cam.holdTimer);
   cancelAnimationFrame(cam.ringRaf);
@@ -3160,6 +3332,7 @@ const jarTotalEl = $('#jarTotal');
 let jarParticles = [];
 let jarRaf = 0;
 let jarW = 0, jarH = 0, jarDpr = 1;
+let jarGap = 0, jarLast = 0;
 let jarScale = 1, jarPanX = 0, jarPanY = 0;
 
 const jarReset = $('#jarReset');
@@ -3179,8 +3352,9 @@ function storedRecords(){
 function updateJar(){
   const n = storedRecords().length;
   jarCountEl.textContent = n;
+  jarCountEl.style.display = n ? '' : 'none';
   jarTotalEl.textContent = n;
-  jarBtn.classList.toggle('show', n > 0);
+  jarBtn.classList.toggle('show', records.length > 0);
   if (jarView.classList.contains('open')) buildJarParticles();
   if (jarSheetOpen) renderJarList();
 }
@@ -3224,7 +3398,8 @@ function buildJarParticles(){
 function sizeJar(){
   const r = jarVessel.getBoundingClientRect();
   if (!r.width || !r.height) return;
-  jarDpr = Math.min(devicePixelRatio || 1, 2);
+  jarDpr = Math.min(devicePixelRatio || 1, isSmallScene() ? 1.5 : 2);
+  jarGap = isSmallScene() ? 30 : 0;
   jarW = r.width;
   jarH = r.height;
   jarCanvas.width = Math.max(1, Math.floor(jarW * jarDpr));
@@ -3301,7 +3476,12 @@ function jarFrame(now){
     jarRaf = 0;
     return;
   }
-  drawJar(now);
+  if (jarGap && now - jarLast < jarGap - 2){
+    jarRaf = requestAnimationFrame(jarFrame);
+    return;
+  }
+  jarLast = now;
+  if (!jarSheetOpen && !document.hidden) drawJar(now);
   jarRaf = requestAnimationFrame(jarFrame);
 }
 
@@ -3315,6 +3495,7 @@ function openJar(){
   jarTotalEl.textContent = storedRecords().length;
   jarView.classList.add('open');
   sizeJar();
+  jarLast = 0;
   if (!jarRaf) jarRaf = requestAnimationFrame(jarFrame);
 }
 
@@ -4101,6 +4282,247 @@ $('#installBtn').addEventListener('click', async () => {
 });
 
 /* =========================================================
+   15.4 一粒一粒翻看
+   ========================================================= */
+const replayEl = $('#replay');
+const replayTrack = $('#replayTrack');
+const replayIndexEl = $('#replayIndex');
+const replayTotalEl = $('#replayTotal');
+const replaySubEl = $('#replaySub');
+const replayHintEl = $('#replayHint');
+
+let replayList = [];
+let replayCurrent = -1;
+let replayToken = 0;
+let replayUrls = [];
+let replayCleanups = [];
+let replayLoaded = {};
+
+function replayWhen(ts){
+  const d = new Date(ts);
+  return `${d.getFullYear()}.${pad(d.getMonth()+1)}.${pad(d.getDate())} · ${fmtTime(ts)}`;
+}
+
+function replayLayers(rec){
+  const layers = [];
+  if (rec.media) layers.push({ kind: rec.type, media: rec.media, mid: rec.id });
+  (rec.extras || []).forEach((x) => layers.push({ kind: x.kind, media: x.media, mid: x.mid }));
+  return layers;
+}
+
+function buildReplayPage(rec, index){
+  const color = lightColor(rec.light);
+  const lightName = (LIGHT[rec.light] || {}).name || '';
+  const layers = replayLayers(rec);
+
+  const page = document.createElement('article');
+  page.className = 'replay-page';
+  page.dataset.index = String(index);
+  page.__rec = rec;
+  page.__layers = layers;
+  page.__audios = [];
+  page.style.background = `radial-gradient(ellipse at 50% 28%, ${rgba(color, 0.075)}, rgba(0,0,0,0) 66%)`;
+
+  const media = layers.map((l, i) => {
+    if (l.kind === 'voice'){
+      return `<button class="v-band rp-band" data-i="${i}" type="button"><span class="play"></span><span class="rail"></span><span class="dur">${fmtDur((l.media && l.media.dur) || 0)}</span></button>`;
+    }
+    if (l.kind === 'photo'){
+      return `<img class="rp-photo" data-i="${i}" alt="">`;
+    }
+    return `<div class="rp-video" data-i="${i}"><video controls playsinline preload="metadata"></video></div>`;
+  }).join('');
+
+  page.innerHTML = `
+    <div class="rp-meta"><i style="color:${color}"></i><span>${replayWhen(rec.ts)}</span><span>${lightName}</span></div>
+    ${media ? `<div class="rp-body">${media}</div>` : ''}
+    <div class="rp-text" data-role="text"></div>
+    ${layers.length > 1 ? `<div class="rp-foot">这一刻叠了 ${layers.length} 层</div>` : ''}
+  `;
+
+  const textEl = page.querySelector('[data-role="text"]');
+  if (rec.text){
+    textEl.textContent = rec.text;
+  }else if (!layers.length){
+    textEl.textContent = '这一刻，我在这里。';
+    textEl.classList.add('rp-quiet');
+  }else{
+    textEl.remove();
+  }
+
+  return page;
+}
+
+function hydrateReplayPage(page, token){
+  const rec = page.__rec;
+  if (!rec || replayLoaded[rec.id]) return;
+  replayLoaded[rec.id] = true;
+  const alive = () => token === replayToken && replayEl.classList.contains('open');
+
+  page.__layers.forEach((layer, i) => {
+    const el = page.querySelector(`[data-i="${i}"]`);
+    if (!el) return;
+
+    mediaGet(layer.mid).then((blob) => {
+      if (!blob || !alive()) return;
+      const url = URL.createObjectURL(blob);
+      replayUrls.push(url);
+
+      if (layer.kind === 'photo'){
+        el.addEventListener('load', () => el.classList.add('ready'), { once: true });
+        el.addEventListener('error', () => el.classList.add('ready'), { once: true });
+        el.src = url;
+      }else if (layer.kind === 'video'){
+        const video = el.querySelector('video');
+        if (!video) return;
+        video.src = url;
+        replayCleanups.push(() => {
+          try{ video.pause(); }catch(e){}
+          video.removeAttribute('src');
+          try{ video.load(); }catch(e){}
+        });
+      }else{
+        const audio = new Audio(url);
+        const rail = el.querySelector('.rail');
+        const toggle = () => {
+          if (audio.paused) audio.play().catch(() => {});
+          else audio.pause();
+        };
+        el.addEventListener('click', toggle);
+        audio.addEventListener('play', () => el.classList.add('playing'));
+        audio.addEventListener('pause', () => el.classList.remove('playing'));
+        audio.addEventListener('timeupdate', () => {
+          const d = audio.duration || (layer.media && layer.media.dur) || 1;
+          if (rail) rail.style.setProperty('--p', String(clamp(audio.currentTime / d, 0, 1)));
+        });
+        audio.addEventListener('ended', () => {
+          el.classList.remove('playing');
+          if (rail) rail.style.setProperty('--p', '0');
+        });
+        page.__audios.push(audio);
+        replayCleanups.push(() => {
+          el.removeEventListener('click', toggle);
+          try{ audio.pause(); }catch(e){}
+          audio.removeAttribute('src');
+        });
+      }
+    }).catch(() => {
+      el.classList.add('failed');
+    });
+  });
+}
+
+function hydrateNear(token, index){
+  const pages = replayTrack.children;
+  const from = Math.max(0, index - 1);
+  const to = Math.min(pages.length - 1, index + 1);
+  for (let i = from; i <= to; i++) hydrateReplayPage(pages[i], token);
+}
+
+function setReplayIndex(index){
+  if (index === replayCurrent) return;
+  const prev = replayCurrent;
+  replayCurrent = index;
+  replayIndexEl.textContent = String(index + 1);
+
+  const pages = replayTrack.children;
+  for (let i = 0; i < pages.length; i++){
+    pages[i].classList.toggle('near', i === index);
+  }
+
+  if (prev >= 0 && pages[prev]){
+    (pages[prev].__audios || []).forEach(a => { try{ a.pause(); }catch(e){} });
+    pages[prev].querySelectorAll('video').forEach(v => { try{ v.pause(); }catch(e){} });
+  }
+
+  hydrateNear(replayToken, index);
+}
+
+function openReplay(startId){
+  const sorted = records.slice().sort((a, b) => b.ts - a.ts);
+  if (!sorted.length){
+    hint('还没有光，先记下这一刻');
+    return;
+  }
+
+  closeReplay();
+  const token = ++replayToken;
+
+  replayList = sorted;
+  replayLoaded = {};
+  replayUrls = [];
+  replayCleanups = [];
+  replayCurrent = -1;
+
+  replayTotalEl.textContent = String(sorted.length);
+  replaySubEl.textContent = `${sorted.length} 粒光`;
+  replayHintEl.classList.remove('gone');
+
+  const frag = document.createDocumentFragment();
+  sorted.forEach((rec, i) => frag.appendChild(buildReplayPage(rec, i)));
+  replayTrack.appendChild(frag);
+
+  replayEl.classList.add('open');
+  replayEl.setAttribute('aria-hidden', 'false');
+
+  let index = startId ? sorted.findIndex(r => r.id === startId) : 0;
+  if (index < 0) index = 0;
+
+  const h = replayTrack.clientHeight;
+  replayTrack.scrollTop = index * h;
+  setReplayIndex(index);
+  hydrateNear(token, index);
+}
+
+function closeReplay(){
+  ++replayToken;
+  replayEl.classList.remove('open');
+  replayEl.setAttribute('aria-hidden', 'true');
+
+  replayTrack.querySelectorAll('video').forEach(v => { try{ v.pause(); }catch(e){} });
+  replayCleanups.forEach(fn => { try{ fn(); }catch(e){} });
+  replayCleanups = [];
+  replayUrls.forEach(u => { try{ URL.revokeObjectURL(u); }catch(e){} });
+  replayUrls = [];
+  replayLoaded = {};
+  replayCurrent = -1;
+
+  const token = replayToken;
+  setTimeout(() => {
+    if (token === replayToken && !replayEl.classList.contains('open')){
+      replayTrack.innerHTML = '';
+    }
+  }, 480);
+}
+
+function pauseReplayMedia(){
+  if (!replayEl.classList.contains('open')) return;
+  replayTrack.querySelectorAll('video').forEach(v => { try{ v.pause(); }catch(e){} });
+  for (const page of replayTrack.children){
+    (page.__audios || []).forEach(a => { try{ a.pause(); }catch(e){} });
+  }
+}
+
+replayTrack.addEventListener('scroll', () => {
+  if (!replayEl.classList.contains('open')) return;
+  const page = replayTrack.firstElementChild;
+  const h = page ? page.offsetHeight : replayTrack.clientHeight;
+  if (!h) return;
+  const index = clamp(Math.round(replayTrack.scrollTop / h), 0, replayList.length - 1);
+  if (index !== replayCurrent){
+    setReplayIndex(index);
+    replayHintEl.classList.add('gone');
+  }
+}, { passive: true });
+
+$('#replayClose').addEventListener('click', closeReplay);
+$('#replayBtn').addEventListener('click', () => {
+  settingsEl.classList.remove('open');
+  openReplay();
+});
+$('#jarReplay').addEventListener('click', () => openReplay());
+
+/* =========================================================
    15.5 放映
    ========================================================= */
 const screeningEl = $('#screening');
@@ -4378,12 +4800,14 @@ document.addEventListener('visibilitychange', () => {
     if (voice.state === 'recording') stopVoice(false);
     if (cameraEl.classList.contains('open')) closeCamera();
     if (screenState.playing) endScreening();
+    pauseReplayMedia();
   }
 });
 
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape'){
-    if (screeningEl.classList.contains('open')) endScreening();
+    if (replayEl.classList.contains('open')) closeReplay();
+    else if (screeningEl.classList.contains('open')) endScreening();
     else if (sheet.classList.contains('open')) closeTextSheet();
     else if (attachSheet.classList.contains('open')) closeAttachSheet();
     else if (cameraEl.classList.contains('open')) closeCamera();
@@ -4394,7 +4818,8 @@ window.addEventListener('keydown', (e) => {
   }
   if (e.code === 'Space' && !sheet.classList.contains('open') &&
       !viewerEl.classList.contains('open') && !cameraEl.classList.contains('open') &&
-      !settingsEl.classList.contains('open') && !screeningEl.classList.contains('open')){
+      !settingsEl.classList.contains('open') && !screeningEl.classList.contains('open') &&
+      !replayEl.classList.contains('open')){
     e.preventDefault();
     momentKey.click();
   }

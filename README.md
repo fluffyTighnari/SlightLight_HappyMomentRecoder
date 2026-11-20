@@ -20,6 +20,8 @@
 
 - 手机上想更顺手：iOS 用「分享 → 添加到主屏幕」，Android 用菜单里的「安装应用」。之后它就像一个很小的小应用，点开就是那间房间。
   *On a phone, add it to your home screen — Share → Add to Home Screen on iOS, or Install app from the menu on Android. It then opens like a tiny app, straight into the room.*
+- 如果 Android 浏览器里找不到「安装应用」，或者加到了主屏却打不开，也可以直接装下面那个很小的 APK。
+  *If the Android browser has no "Install app" entry, or the shortcut refuses to open, use the tiny APK described below instead.*
 - 不用注册，不用登录。打开就有光。
   *No account, no sign-in. The light is already there.*
 
@@ -45,6 +47,8 @@
   *The room keeps the last thirty. Older ones drift down into the jar in the bottom right corner.*
 - 瓶子里可以按时间翻看：光粒沿着玻璃管往下沉，日期是刻在玻璃上的刻度，每一粒都由一根细线引出它的时间和描述。可以从「全部」切到「瓶底」，也可以直接搜一句话、一个日期，或一个礼拜。
   *Inside the jar you can go back through time: the lights sink along a deep glass tube, dates are the marks on the glass, and a thin thread draws each light's time and its words out beside it. You can move from "all" down to "the bottom of the jar", or simply search a sentence, a date, a week.*
+- 也可以「一粒一粒翻看」：一屏只有一刻，上下滑动翻页；照片、视频、语音和文字各自展开。记录不到三十粒时同样可以用。
+  *Or open "one by one": one moment per screen, paging with a swipe; photos, videos, sounds and words each unfold. It is there from the very first light.*
 - 一条光里最多可以叠四层：先记下这一刻，再点「+ 再加一点」，补一句话、一段声，或一张影。叠了多层的时刻，在房间里会多出一圈很淡的环。
   *One light can hold up to four layers: keep the moment first, then「+ 再加一点」· "one more thing" to add a sentence, a sound, or an image. Moments with layers carry a very faint ring around them in the room.*
 - 记录之后可以补一句话，也可以永远不补。
@@ -63,6 +67,23 @@
 所有记录只留在这台设备上，不会上传到任何地方。也可以把备份带走，在另一台设备上继续；重复的光会自己跳过，不会叠两次。
 
 *Everything stays on this device and is never uploaded anywhere. You can also carry a backup to another device and keep going there; lights you already have are recognised and quietly skipped.*
+
+---
+
+## Android 安装包 · Android package
+
+浏览器不支持「添加到主屏幕」，或者加到了主屏却打不开？可以直接装一个很小的安装包。它把同一个页面整个打包进应用里，完全离线，约 0.4 MB。
+
+*If adding to the home screen is unavailable, install the tiny APK instead. It bundles the very same page, works fully offline, and is about 0.4 MB.*
+
+- 下载：仓库的 Releases 页面；或者 Actions → Android APK → 最近一次运行，下载 `weiguang-apk`。
+  *Download it from the repository's Releases, or from the latest Android APK workflow run.*
+- 自己构建：`cd android` → `.\gradlew.bat assembleRelease`，或运行 `android\build-apk.ps1`；产物在 `android/dist/`。
+  *Build it yourself with the Gradle wrapper; the script leaves the APK in `android/dist/`.*
+- 安装包的存储和浏览器是分开的。第一次使用时，先在网页版「导出备份」，再在安装包里「导入备份」，光就都回来了。
+  *The APK keeps its data separately from the browser. Export a backup from the web page once, then import it in the app.*
+- 如果提示「禁止安装未知应用」，在系统设置里给文件管理器（或浏览器）打开这个开关即可。
+  *When Android asks, allow your file manager or browser to install unknown apps.*
 
 ---
 

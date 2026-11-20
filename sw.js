@@ -1,4 +1,4 @@
-const CACHE = 'weiguang-v9';
+const CACHE = 'weiguang-v12';
 const SHELL = [
   './',
   './index.html',
